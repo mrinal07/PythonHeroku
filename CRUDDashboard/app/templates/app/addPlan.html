@@ -1,0 +1,358 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+
+    <style>
+      @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+
+      /* Bootstrap Icons */
+      @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+      *,
+      *:before,
+      *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      form {
+        max-width: 300px;
+        margin: 10px auto;
+        padding: 10px 20px;
+        background: #f4f7f8;
+        border-radius: 8px;
+      }
+
+      h1 {
+        margin: 0 0 30px 0;
+        text-align: center;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="date"],
+      input[type="datetime"],
+      input[type="email"],
+      input[type="number"],
+      input[type="search"],
+      input[type="tel"],
+      input[type="time"],
+      input[type="url"],
+      textarea,
+      select {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        font-size: 16px;
+        height: auto;
+        margin: 0;
+        outline: 0;
+        padding: 6px;
+        width: 100%;
+        background-color: #e8eeef;
+        color: black;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+        margin-bottom: 30px;
+        border: 1px solid black;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin: 0 4px 8px 0;
+      }
+
+      select {
+        padding: 6px;
+        height: 32px;
+        border-radius: 2px;
+      }
+
+      .button {
+        padding: 10px 0px 10px 0px;
+        color: #fff;
+        background-color: #4bc970;
+        font-size: 18px;
+        text-align: center;
+        font-style: normal;
+        border-radius: 5px;
+        width: 100%;
+        border: 1px solid #3ac162;
+        border-width: 1px 1px 3px;
+        box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+        margin-bottom: 10px;
+      }
+
+      fieldset {
+        margin-bottom: 30px;
+        border: none;
+      }
+
+      legend {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: black;
+      }
+
+      label.light {
+        font-weight: 300;
+        display: inline;
+      }
+
+      .number {
+        background-color: #5fcf80;
+        color: #fff;
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        font-size: 0.8em;
+        margin-right: 4px;
+        line-height: 30px;
+        text-align: center;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+        border-radius: 100%;
+      }
+      
+
+      @media screen and (min-width: 480px) {
+        form {
+          max-width: 480px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <!-- Banner -->
+
+      <!-- Dashboard -->
+      <div
+        class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary"
+      >
+        <!-- Vertical Navbar -->
+        <nav
+          class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
+          id="navbarVertical"
+        >
+          <div class="container-fluid">
+            <!-- Toggler -->
+            <button
+              class="navbar-toggler ms-n2"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#sidebarCollapse"
+              aria-controls="sidebarCollapse"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Brand -->
+            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+              <img
+                src="{% static 'images/chatbuck.png'%}"
+                alt="..."
+                style="height: 100px"
+              />
+            </a>
+            <!-- User menu (mobile) -->
+            <div class="navbar-user d-lg-none">
+              <!-- Dropdown -->
+              <div class="dropdown">
+                <!-- Toggle -->
+                <a
+                  href="#"
+                  id="sidebarAvatar"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <div class="avatar-parent-child">
+                    <img
+                      alt="Image Placeholder"
+                      src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                      class="avatar avatar- rounded-circle"
+                    />
+                    <span class="avatar-child avatar-badge bg-success"></span>
+                  </div>
+                </a>
+                <!-- Menu -->
+                <div
+                  class="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="sidebarAvatar"
+                >
+                  <a href="#" class="dropdown-item">Profile</a>
+                  <a href="#" class="dropdown-item">Settings</a>
+                  <a href="#" class="dropdown-item">Billing</a>
+                  <hr class="dropdown-divider" />
+                  <a href="#" class="dropdown-item">Logout</a>
+                </div>
+              </div>
+            </div>
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidebarCollapse">
+              <!-- Navigation -->
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="{% url 'home' %}"
+                    id="dashboard-btn"
+                  >
+                    <i class="bi bi-house"></i> Dashboard
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'home' %}" id="admin-btn">
+                    <i class="bi bi-bar-chart"></i> Login Admin Details
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="{% url 'company' %}"
+                    id="company-btn"
+                  >
+                    <i class="bi bi-chat"></i> Company Details
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'plan' %}" id="plan-btn">
+                    <i class="bi bi-bookmarks"></i> Plans Details
+                  </a>
+                </li>
+              </ul>
+
+              <!-- Divider -->
+              <hr class="navbar-divider my-5 opacity-20" />
+              <!-- Navigation -->
+
+              <!-- Push content down -->
+              <div class="mt-auto"></div>
+              <!-- User (md) -->
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <i class="bi bi-box-arrow-left"></i> Logout
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- Main content -->
+        <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+          <!-- Header -->
+          <header class="bg-surface-primary border-bottom pt-6">
+            <div class="container-fluid">
+              <div class="mb-npx">
+                <div class="row align-items-center">
+                  <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                    <!-- Title -->
+                    <h1 class="h2 mb-5 ls-tight">Chatbuck</h1>
+                  </div>
+                  <!-- Actions -->
+                </div>
+                <!-- Nav -->
+              </div>
+              <div></div>
+            </div>
+          </header>
+          <!-- Main -->
+          <main class="py-6 bg-surface-secondary">
+            <div class="container-fluid">
+              <div id="plan">
+                <div class="card shadow border-0 mb-7">
+                  <div class="card-header">
+                    <div class="col-sm-6 col-12">
+                      <div class="mx-n1">
+                        <span
+                          class="mb-0"
+                          style="font-weight: bold; font-size: 18px"
+                          >Add Plans</span
+                        >
+                        <span style="margin-left: 60px;">
+                            <a href="{% url 'plan' %}">View Plans</a>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% if val %}
+                <div
+                  class="alert alert-success alert-dismissible fade show"
+                  role="alert"
+                  style="width: 60%"
+                >
+                  <strong> Plan Added successfully !</strong>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                    style="float: right"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </main>
+
+          <form id="form" action="{% url 'addPlan' %}" method="post">
+            {% csrf_token %}
+            <label for="planName">Plan Name:</label>
+            <input type="text" id="planName" name="planName" required />
+
+            <label for="planValidity">Plan Validity:</label>
+            <input type="date" id="planValidity" name="planValidity" required />
+
+            <label for="planPrice">Plan Price:</label>
+            <input type="number" id="planPrice" name="planPrice" required />
+
+            <button
+              class="button"
+              id="btn"
+              type="submit"
+              onclick="submitForm()"
+            >
+              Add
+            </button>
+          </form>
+
+          <script>
+            //   It will stop auto submit when page is refreshed
+            if (window.history.replaceState) {
+              window.history.replaceState(null, null, window.location.href);
+            }
+          </script>
+          <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"
+          ></script>
+          <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+          ></script>
+          <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+          ></script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
